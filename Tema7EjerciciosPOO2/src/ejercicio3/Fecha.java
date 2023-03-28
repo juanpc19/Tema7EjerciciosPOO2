@@ -150,6 +150,43 @@ public class Fecha {
 	 */
 	public void diaSiguiente() {
 
+		// switch de mes
+
+		switch (mes) {
+		case 1, 3, 5, 7, 8, 10, 12 -> {
+
+			if (dia == 31) {
+				dia = 1;
+				mes++;
+			}
+		}
+
+		case 2 -> {
+
+			if (esBisiesto()) {
+				if (dia == 29) {
+					dia = 1;
+					mes++;
+					
+				} else if (dia == 28) {
+					dia = 1;
+					mes++;
+				}
+			}
+		}
+
+		case 4, 6, 9, 11 -> {
+			if (dia == 30) {
+				dia = 1;
+				mes++;
+			}
+		}
+
+		case 13 -> {
+			mes = 1;
+			dia = 1;
+		}
+		}
 		if (esBisiesto() && this.dia < 29) {
 			this.dia++;
 
@@ -161,7 +198,7 @@ public class Fecha {
 		// si atributo mes toma valor mayor a 13
 		if (this.mes > 12) {
 			// doy a atributo mes valor igual a 0
-			this.mes = 0;
+			this.mes = 1;
 			// y sumo a atributo año valor +1
 			this.año++;
 		}
